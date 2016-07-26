@@ -21,3 +21,5 @@
 
 7)git push --set-upstream origin test
 #将当前分支（没有关联追踪到远程分支）追踪到远程的一个分支test并且推送到远程分支test
+
+...
