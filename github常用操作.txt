@@ -36,3 +36,7 @@ vi .git/config中 merge = refs/heads/test
 7)git push --set-upstream origin test
 #将当前分支（没有关联追踪到远程分支）追踪到远程的一个分支test并且推送到远程分支test
 
+8) git merge -s subtree origin/test
+#将远程的test的分支合并到本地当前分支
+
+
