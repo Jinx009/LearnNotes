@@ -39,4 +39,6 @@ vi .git/config中 merge = refs/heads/test
 8) git merge -s subtree origin/test
 #将远程的test的分支合并到本地当前分支
 
-
+9)本地commit之后还原
+使用 git  log查看最近commit的id编码
+使用 git reset --hard 你想还原到的commit_id 
