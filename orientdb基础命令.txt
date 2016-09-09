@@ -1,0 +1,134 @@
+1）./console.sh #进入控制台模式，在bin目录下面
+OrientDB console v.2.2.9 (build 2.2.x@rca4980f3bd018e0a60f8c0ac0bcfeb04a626fec3; 2016-09-08 06:38:30+0000) www.orientdb.com
+
+2）connect remote:localhost root root #连接本地数据库server其中第一个root为账号，第二个位密码，以下相同
+
+
+3）connect remote:localhost/jinx root root  #连接本地server上的jinx数据库
+Connecting to database [remote:localhost/jinx] with user 'root'...OK 
+
+4）create database remote:localhost/jinx007 root root plocal graph  #创建jinx007数据库
+Creating database [remote:localhost/jinx009] using the storage type [plocal]...
+Connecting to database [remote:localhost/jinx009] with user 'root'...OK
+Database created successfully.
+
+5）drop database remote:localhost/jinx009 root root #删除jinx009数据库
+Disconnecting from remote server [remote:localhost/jinx009]...
+OK
+Disconnecting from the database [jinx009]...OK
+
+Database 'remote:localhost/jinx009' deleted successfully
+
+6)classes #查看所有的表
+CLASSES
++----+-----------+-------------+-------------------------------------------------------------------------------------------------------------+-----+
+|#   |NAME       |SUPER-CLASSES|CLUSTERS                                                                                                     |COUNT|
++----+-----------+-------------+-------------------------------------------------------------------------------------------------------------+-----+
+|0   |_studio    |             |_studio(25),_studio_1(26),_studio_2(27),_studio_3(28),_studio_4(29),_studio_5(30),_studio_6(31),_studio_7(32)|    1|
+|1   |E          |             |e(17),e_1(18),e_2(19),e_3(20),e_4(21),e_5(22),e_6(23),e_7(24)                                                |    0|
+|2   |OFunction  |             |ofunction(6)                                                                                                 |    0|
+|3   |OIdentity  |             |-                                                                                                            |    0|
+|4   |ORestricted|             |-                                                                                                            |    0|
+|5   |ORole      |[OIdentity]  |orole(4)                                                                                                     |    3|
+|6   |OSchedule  |             |oschedule(8)                                                                                                 |    0|
+|7   |OSequence  |             |osequence(7)                                                                                                 |    0|
+|8   |OTriggered |             |-                                                                                                            |    0|
+|9   |OUser      |[OIdentity]  |ouser(5)                                                                                                     |    3|
+|10  |V          |             |v(9),v_1(10),v_2(11),v_3(12),v_4(13),v_5(14),v_6(15),v_7(16)                                                 |    0|
++----+-----------+-------------+-------------------------------------------------------------------------------------------------------------+-----+
+|    |TOTAL      |             |                                                                                                             |    7|
++----+-----------+-------------+-------------------------------------------------------------------------------------------------------------+-----+
+
+7）create class Jinx #创建一张表，表名为Jinx
+Class created successfully. Total classes in database now: 12.
+
+8）CREATE PROPERTY Jinx.name STRING  #为表Jinx添加name字段属性
+Property created successfully with id=1.
+
+9）INFO CLASS Jinx 查看表Jinx信息
+CLASS 'Jinx'
+
+Records..............: 0
+Default cluster......: jinx (id=33)
+Supported clusters...: jinx(33), jinx_1(34), jinx_2(35), jinx_3(36), jinx_4(37), jinx_5(38), jinx_6(39), jinx_7(40)
+Cluster selection....: round-robin
+Oversize.............: 0.0
+
+PROPERTIES
++----+----+------+-----------------+---------+--------+--------+----+----+-------+-------+
+|#   |NAME|TYPE  |LINKED-TYPE/CLASS|MANDATORY|READONLY|NOT-NULL|MIN |MAX |COLLATE|DEFAULT|
++----+----+------+-----------------+---------+--------+--------+----+----+-------+-------+
+|0   |name|STRING|                 |false    |false   |false   |    |    |default|       |
++----+----+------+-----------------+---------+--------+--------+----+----+-------+-------+
+
+
+10）insert into Jinx(name) values('jinx') #为表Jinx插入一条数据
+Inserted record 'Jinx#33:0{name:jinx} v1' in 0.013000 sec(s).
+
+select  from CLUSTER:Jinx
+#+----+-----+------+----+
+|#   |@RID |@CLASS|name|
++----+-----+------+----+
+|0   |#33:0|Jinx  |jinx|
++----+-----+------+----+
+
+1 item(s) found. Query executed in 0.002 sec(s).
+
+
+11）browse class Jinx #显示表Jinx的数据
++----+-----+------+----+
+|#   |@RID |@CLASS|name|
++----+-----+------+----+
+|0   |#33:0|Jinx  |jinx|
++----+-----+------+----+
+
+
+12）clusters #查看所有群
+CLUSTERS (collections)
++----+---------+----+---------+-----------------+-----+
+|#   |NAME     |  ID|CLASS    |CONFLICT-STRATEGY|COUNT|
++----+---------+----+---------+-----------------+-----+
+|0   |_studio  |  25|_studio  |                 |    1|
+|1   |_studio_1|  26|_studio  |                 |    0|
+|2   |_studio_2|  27|_studio  |                 |    0|
+|3   |_studio_3|  28|_studio  |                 |    0|
+|4   |_studio_4|  29|_studio  |                 |    0|
+|5   |_studio_5|  30|_studio  |                 |    0|
+|6   |_studio_6|  31|_studio  |                 |    0|
+|7   |_studio_7|  32|_studio  |                 |    0|
+|8   |default  |   3|         |                 |    0|
+|9   |e        |  17|E        |                 |    0|
+|10  |e_1      |  18|E        |                 |    0|
+|11  |e_2      |  19|E        |                 |    0|
+|12  |e_3      |  20|E        |                 |    0|
+|13  |e_4      |  21|E        |                 |    0|
+|14  |e_5      |  22|E        |                 |    0|
+|15  |e_6      |  23|E        |                 |    0|
+|16  |e_7      |  24|E        |                 |    0|
+|17  |index    |   1|         |                 |    0|
+|18  |internal |   0|         |                 |    3|
+|19  |jinx     |  33|Jinx     |                 |    1|
+|20  |jinx_1   |  34|Jinx     |                 |    0|
+|21  |jinx_2   |  35|Jinx     |                 |    0|
+|22  |jinx_3   |  36|Jinx     |                 |    0|
+|23  |jinx_4   |  37|Jinx     |                 |    0|
+|24  |jinx_5   |  38|Jinx     |                 |    0|
+|25  |jinx_6   |  39|Jinx     |                 |    0|
+|26  |jinx_7   |  40|Jinx     |                 |    0|
+|27  |manindex |   2|         |                 |    0|
+|28  |ofunction|   6|OFunction|                 |    0|
+|29  |orole    |   4|ORole    |                 |    3|
+|30  |oschedule|   8|OSchedule|                 |    0|
+|31  |osequence|   7|OSequence|                 |    0|
+|32  |ouser    |   5|OUser    |                 |    3|
+|33  |v        |   9|V        |                 |    0|
+|34  |v_1      |  10|V        |                 |    0|
+|35  |v_2      |  11|V        |                 |    0|
+|36  |v_3      |  12|V        |                 |    0|
+|37  |v_4      |  13|V        |                 |    0|
+|38  |v_5      |  14|V        |                 |    0|
+|39  |v_6      |  15|V        |                 |    0|
+|40  |v_7      |  16|V        |                 |    0|
++----+---------+----+---------+-----------------+-----+
+|    |TOTAL    |    |         |                 |   11|
++----+---------+----+---------+-----------------+-----+
