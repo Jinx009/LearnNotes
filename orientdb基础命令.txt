@@ -65,7 +65,7 @@ PROPERTIES
 10）insert into Jinx(name) values('jinx') #为表Jinx插入一条数据
 Inserted record 'Jinx#33:0{name:jinx} v1' in 0.013000 sec(s).
 
-select  from CLUSTER:Jinx
+11)select  from CLUSTER:Jinx #查看群中Jinx表
 #+----+-----+------+----+
 |#   |@RID |@CLASS|name|
 +----+-----+------+----+
@@ -75,7 +75,7 @@ select  from CLUSTER:Jinx
 1 item(s) found. Query executed in 0.002 sec(s).
 
 
-11）browse class Jinx #显示表Jinx的数据
+12）browse class Jinx #显示表Jinx的数据
 +----+-----+------+----+
 |#   |@RID |@CLASS|name|
 +----+-----+------+----+
@@ -83,7 +83,7 @@ select  from CLUSTER:Jinx
 +----+-----+------+----+
 
 
-12）clusters #查看所有群
+13）clusters #查看所有群
 CLUSTERS (collections)
 +----+---------+----+---------+-----------------+-----+
 |#   |NAME     |  ID|CLASS    |CONFLICT-STRATEGY|COUNT|
