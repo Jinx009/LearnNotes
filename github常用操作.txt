@@ -41,4 +41,7 @@ vi .git/config中 merge = refs/heads/test
 
 9)本地commit之后还原
 使用 git  log查看最近commit的id编码
-使用 git reset --hard 你想还原到的commit_id 
+使用 git reset --hard 你想还原到的commit_id
+
+10)本地分支重命名
+git branch -m 改之后的分支名 改之前的分支名 
